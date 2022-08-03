@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <menuitem id="menu_rs_root"
+        name="Rumah Sakit"
+        sequence="0"/>
+
+    <menuitem id="menu_karyawan_master"
+        name="Karyawan"
+        parent="menu_rs_root"
+        sequence="0"/>
+
+    <menuitem id="menu_pasien_master"
+        name="Pasien"
+        parent="menu_rs_root"
+        sequence="0"/>
+
+    <menuitem id="menu_produk_master"
+        name="Produk"
+        parent="menu_rs_root"
+        sequence="0"/>
+
+</odoo>

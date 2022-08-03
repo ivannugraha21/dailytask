@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_rumah_sakit_rumah_sakit,rumah_sakit.rumah_sakit,model_rumah_sakit_rumah_sakit,base.group_user,1,1,1,1
+
+access.pasien.daftarkunjungan,access_pasien_daftarkunjungan,rumah_sakit.model_pasien_daftarkunjungan,base.group_user,1,1,1,1
+
+access.daftarkunjungan.pelayanan.line,access_daftarkunjungan_pelayanan_line,rumah_sakit.model_daftarkunjungan_pelayanan_line,base.group_user,1,1,1,1
