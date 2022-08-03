@@ -66,13 +66,28 @@
         </field>
     </record>
 
+    <record id="view_pasien_daftarkunjungan_search" model="ir.ui.view">
+        <field name="name">pasien.daftarkunjungan.search</field>
+        <field name="model">pasien.daftarkunjungan</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- filter_domain dipake untuk mencari di field lain -->
+                <field name="nama" filter_domain="['|', ('nama', 'ilike', self)]"/> 
+                <!-- Menu Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_by_status" context="{'group_by': 'status_rawat'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
 
     <record id="action_pasien_daftarkunjungan" model="ir.actions.act_window">
         <field name="name">Daftar Kunjungan</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">pasien.daftarkunjungan</field>
         <field name="view_mode">tree,form</field>
-        <field name="context">{}</field>
+        <field name="context">{"search_default_group_by_status": 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
               Create your first patient!

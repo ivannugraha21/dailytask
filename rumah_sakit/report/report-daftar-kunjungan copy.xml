@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="daftar_kunjungan_report" model="ir.actions.report">
+        <field name="name">Report Daftar Kunjungan</field>
+        <field name="model">pasien.daftarkunjungan</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rumah_sakit.report_rumah_sakit</field>
+        <field name="report_file">rumah_sakit.report_rumah_sakit</field>
+        <field name="binding_model_id" ref="model_pasien_daftarkunjungan"></field>
+        <field name="binding_type">report</field>
+    </record>
+
+
+    <template id="report_rumah_sakit">
+        <t t-call="web.external_layout">
+        <!-- <t t-call="web.html_container"> -->
+           <!--  <t t-foreach="docs" t-as="o"> -->
+
+
+        <div class="page">
+            <div class="row mt32 mb32">
+
+                <br/><br/>
+                <center>
+                    <h1>Report Daftar Kunjungan</h1>
+                </center>
+                <br/><br/>
+                Nama : <span t-field="docs.nama"></span> <br/>
+                Penanggung Jawab : <span t-field="docs.penanggung_jawab"></span> <br/>
+                Tanggal Kunjungan : <span t-field="docs.tanggal_kunjungan"></span> <br/>
+                Status : <span t-field="docs.status_rawat"></span>
+                <br/><br/>
+
+                <table class="table table-sm o_main_table" style="width: 100%;">
+                    <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                    <thead style="display: table-row-group">
+                        <tr>
+                            <th name="th_description" class="text-left">Deskripsi</th>
+                            <th name="th_quantity" class="text-right">Jumlah</th>
+                            <th name="th_priceunit" class="text-right">Harga</th>
+                            <th name="th_subtotal" class="text-right">Sub Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+
+                        <t t-set="current_subtotal" t-value="0"/>
+
+                        <t t-foreach="docs.list_pelayanan_ids" t-as="line">
+                            
+                            <t t-set="current_subtotal" t-value="current_subtotal + line.sub_total" groups="account.group_show_line_subtotals_tax_excluded"/>
+                           <!--  <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/> -->
+
+                            <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+                               
+                                    <td name="td_name"><span t-field="line.product_id"/></td>
+                                    <td name="td_quantity" class="text-right">
+                                        <span t-field="line.qty"/> 
+                                    </td>
+                                    <td name="td_priceunit" class="text-right">
+                                        <span t-field="line.price_unit"/>
+                                    </td>
+                                    <td name="td_subtotal" class="text-right o_price_total">
+                                        <span t-field="line.sub_total" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                    </td>
+                                
+                            </tr>
+
+                        </t>
+                    </tbody>
+                </table>
+
+                <div class="clearfix" name="so_total_summary">
+                    <div id="total" class="row" name="total">
+                        <div t-attf-class="col-sm-7 col-md-6 ml-auto" style="border-top: 1px solid #999;">
+                            <table class="table table-sm">
+                                <!-- Tax totals -->
+                                <!-- <t t-set="tax_totals" t-value="json.loads(doc.tax_totals_json)"/> -->
+                                <span style="float: left;"> Total </span>  
+                                <span style="float: right;"><t t-out="current_subtotal"/></span>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                </div>
+            </div>
+
+
+           <!--  </t> -->
+
+
+
+        </t>
+    </template>
+
+</odoo>

@@ -33,7 +33,9 @@
         'views/karyawan-departemen.xml',
         'views/pasien-daftar-kunjungan.xml',
         'views/pasien-pasien.xml',
-        'views/produk-produk.xml'
+        'views/produk-produk.xml',
+        #
+        'report/report-daftar-kunjungan.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
