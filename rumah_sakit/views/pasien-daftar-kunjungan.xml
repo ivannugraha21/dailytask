@@ -32,6 +32,9 @@
                         </group>
                     </group>
                     <notebook>
+                        <page string="Maps" name="pasien_maps">
+                            <div id="map" style="width: auto; height: 550px; position: relative; overflow: hidden;"></div>
+                        </page>
                         <page string="List Pelayanan Obat dan Harga" name="pasien_list_pelayanan">
                             <field name="list_pelayanan_ids">
                                 <tree>

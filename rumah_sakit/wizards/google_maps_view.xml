@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_google_maps_form" model="ir.ui.view">
+        <field name="name">google.maps.wizard.form</field>
+        <field name="model">google.maps.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>                       
+                    <group>
+                        <field name="res_partner_id" invisible="1"/>
+                        <field name="negara"/>    
+                        <field name="provinsi"/>
+                        <field name="kotakab"/>
+                        <field name="alamat1"/>
+                        <field name="alamat2"/>
+                        <!-- <field name="provinsi"/>
+                        <field name="kotakab"/>
+                        <field name="kecamatan"/>
+                        <field name="kelurahan"/>
+                        <field name="alamat"/> -->
+                    </group>
+                    <group>
+                        
+
+
+
+
+                    </group>
+                </group>
+                <footer>
+                    <button string="Generate Map" name="generate_maps" type="object" class="btn-primary"/>
+                    <button string="Discard" special="cancel" class="btn-secondary"/> 
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_google_maps" model="ir.actions.act_window">
+        <field name="name">Google Maps</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">google.maps.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- =============== INHERIT NEW PAGE INTO NOTE ================ -->
+    <record id="view_google_maps_inherit" model="ir.ui.view">
+        <field name="name">res.partner.status.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page name="google_maps" string="Google Map">
+                    <button name="%(rumah_sakit.action_google_maps)d" string="Generate Map" type="action" class="btn-primary"/>
+                    <group>
+                        <button string="Test"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

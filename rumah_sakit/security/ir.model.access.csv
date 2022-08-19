@@ -6,3 +6,6 @@ access.karyawan.departemen,access_karyawan_departemen,rumah_sakit.model_karyawan
 access.pasien.daftarkunjungan,access_pasien_daftarkunjungan,rumah_sakit.model_pasien_daftarkunjungan,base.group_user,1,1,1,1
 
 access.daftarkunjungan.pelayanan.line,access_daftarkunjungan_pelayanan_line,rumah_sakit.model_daftarkunjungan_pelayanan_line,base.group_user,1,1,1,1
+
+
+access.google.maps.wizard,access_google_maps_wizard,rumah_sakit.model_google_maps_wizard,base.group_user,1,1,1,1

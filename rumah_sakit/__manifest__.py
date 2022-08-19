@@ -27,6 +27,8 @@
         'security/ir.model.access.csv',
         # 'views/views.xml',
         # 'views/templates.xml',
+        'wizards/google_maps_view.xml',
+        #'views/assets.xml',
         'views/menu.xml',
         'views/res_partner_inherite.xml',
         'views/karyawan-karyawan.xml',
@@ -37,6 +39,11 @@
         #
         'report/report-daftar-kunjungan.xml'
     ],
+    'assets': {
+        'web.assets_backend': [
+            'rumah_sakit/static/src/js/popup.js'
+        ]
+    },
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
