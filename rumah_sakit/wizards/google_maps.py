@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
-from odoo import api, fields, models, _
+import json
+import logging
 
+import requests
+
+from odoo import api, fields, models, tools, _
+from odoo.exceptions import UserError
+from openerp.osv import osv
+
+_logger = logging.getLogger(__name__)
 
 class GoogleMapsWizard(models.TransientModel):
     _name = "google.maps.wizard"
     _description = "Google Maps Wizard"
 
-
-    
-
+    # Update Data On-Load
     @api.model
     def default_get(self, fields):
         res = super(GoogleMapsWizard, self).default_get(fields)
@@ -18,18 +24,19 @@ class GoogleMapsWizard(models.TransientModel):
         return res
 
     res_partner_id = fields.Many2one('res.partner', string="Partner ID")
-    negara = fields.Many2one(related="res_partner_id.country_id", string="Negara")
-    provinsi = fields.Many2one(related="res_partner_id.state_id", string="Provinsi")
-    kotakab = fields.Char(related="res_partner_id.city", string="Kota/Kab")
-    alamat1 = fields.Char(related="res_partner_id.street", string="Alamat 1")
-    alamat2 = fields.Char(related="res_partner_id.street2", string="Alamat 2")
-    #provinsi = fields.Char(string="Provinsi")
-    #kotakab = fields.Char(string="Kota/Kab")
-    #kecamatan = fields.Char(string="Kecamatan")
-    #kelurahan = fields.Char(string="Kelurahan")
-    #alamat = fields.Char(string="Alamat")
-
-
-    def generate_maps(self):
-        return
+    country_id = fields.Many2one(related="res_partner_id.country_id", string="Country", readonly=False)
+    city = fields.Char(related="res_partner_id.city", string="City", readonly=False)
+    state_id = fields.Many2one(related="res_partner_id.state_id", string="State", readonly=False)
+    zip = fields.Char(related="res_partner_id.zip", string="Zip Code", readonly=False)
+    street = fields.Char(related="res_partner_id.street", string="Street", readonly=False)
+    street2 = fields.Char(related="res_partner_id.street2", string="Street 2", readonly=False)
     
+
+
+    def update_address_wizard(self):
+        print('.............. Update Complete')
+        return True
+
+
+
+ 

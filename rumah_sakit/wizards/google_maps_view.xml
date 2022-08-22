@@ -9,27 +9,17 @@
                 <group>                       
                     <group>
                         <field name="res_partner_id" invisible="1"/>
-                        <field name="negara"/>    
-                        <field name="provinsi"/>
-                        <field name="kotakab"/>
-                        <field name="alamat1"/>
-                        <field name="alamat2"/>
-                        <!-- <field name="provinsi"/>
-                        <field name="kotakab"/>
-                        <field name="kecamatan"/>
-                        <field name="kelurahan"/>
-                        <field name="alamat"/> -->
+                        <field name="country_id"/>    
+                        <field name="city"/>
+                        <field name="state_id"/>
+                        <field name="zip"/>
+                        <field name="street"/>
+                        <field name="street2"/>
                     </group>
-                    <group>
-                        
-
-
-
-
-                    </group>
+                    <group></group>
                 </group>
                 <footer>
-                    <button string="Generate Map" name="generate_maps" type="object" class="btn-primary"/>
+                    <button string="Update Address" id="updateAddress" name="update_address_wizard" type="object" class="btn-primary"/>
                     <button string="Discard" special="cancel" class="btn-secondary"/> 
                 </footer>
             </form>
@@ -52,10 +42,18 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='internal_notes']" position="after">
                 <page name="google_maps" string="Google Map">
-                    <button name="%(rumah_sakit.action_google_maps)d" string="Generate Map" type="action" class="btn-primary"/>
+                    <button id="eventTest" name="%(rumah_sakit.action_google_maps)d" string="Generate Map" type="action" class="btn-primary"/>
+                    <button name="geo_localize" type="object" string="Update Lat/Long"/>
+                    <button id="openMap" string="Update Map"/>
                     <group>
-                        <button string="Test"/>
+                        <group>
+                            <field name="partner_latitude"/>
+                        </group>
+                        <group>
+                            <field name="partner_longitude"/>
+                        </group>
                     </group>
+                    <div id="map" class="map" style="display: none; background-color: black; width: 100%; height: 300px;"></div>
                 </page>
             </xpath>
         </field>

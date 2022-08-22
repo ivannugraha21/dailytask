@@ -39,9 +39,13 @@
         #
         'report/report-daftar-kunjungan.xml'
     ],
+    'qweb': {
+        'rumah_sakit/static/src/xml/widget_one_template.xml'
+    },
     'assets': {
         'web.assets_backend': [
-            'rumah_sakit/static/src/js/popup.js'
+            'rumah_sakit/static/src/js/popup.js',
+            # 'rumah_sakit/static/src/js/widget_one.js'
         ]
     },
     # only loaded in demonstration mode
