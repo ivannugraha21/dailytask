@@ -6,7 +6,6 @@ import requests
 
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import UserError
-from openerp.osv import osv
 
 _logger = logging.getLogger(__name__)
 
@@ -36,6 +35,15 @@ class GoogleMapsWizard(models.TransientModel):
     def update_address_wizard(self):
         print('.............. Update Complete')
         return True
+
+    @api.model
+    def updateLatLong(self, data):
+        partner = self.env['res.partner'].search([('id', '=', data['id'])], limit=1)
+        partner.write({
+            'partner_latitude': data['lat'],
+            'partner_longitude': data['long']
+            })
+        return partner
 
 
 
