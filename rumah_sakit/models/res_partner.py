@@ -13,7 +13,7 @@ class ResPartner(models.Model):
         ('pasien', 'Pasien')
         ],  default='karyawan', readonly=True)
 
-    add_latitude = fields.Char(string="Address Latitude")
-    add_longitude = fields.Char(string="Address Longitude")
+    add_latitude = fields.Char(string="Address Latitude", readonly=True, default='0')
+    add_longitude = fields.Char(string="Address Longitude", readonly=True, default='0')
     html_map_view = fields.Html(string="HTML code for showing map")
 

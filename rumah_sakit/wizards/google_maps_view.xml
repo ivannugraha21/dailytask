@@ -43,7 +43,7 @@
             <xpath expr="//page[@name='internal_notes']" position="after">
                 <page name="google_maps" string="Google Map">
                     <button id="eventTest" name="%(rumah_sakit.action_google_maps)d" string="EDIT ADDRESS" type="action" class="btn-primary"/>
-                    <button name="geo_localize" type="object" string="UPDATE GEO" class="btn-primary"/>
+                    <!-- <button name="geo_localize" type="object" string="UPDATE GEO" class="btn-primary"/> -->
                     <button id="openMap" string="UPDATE MAP" class="btn-primary"/>
                     <!-- <button id="ClickTest" string="Pencet" class="btn-primary"/> -->
                     <group>
@@ -51,9 +51,9 @@
                             <label for="partner_latitude" string="Geo Location"/>
                             <div>
                                 <span>Lat : </span>
-                                <field name="partner_latitude" nolabel="1" class="oe_inline"/>
+                                <field name="add_latitude" nolabel="1" class="oe_inline"/>
                                 <span>, Long: </span>
-                                <field name="partner_longitude" nolabel="1" class="oe_inline"/>
+                                <field name="add_longitude" nolabel="1" class="oe_inline"/>
                             </div>
                         </group>
                     </group>

@@ -34,17 +34,27 @@ class GoogleMapsWizard(models.TransientModel):
 
     def update_address_wizard(self):
         print('.............. Update Complete')
+        # self.env['res.config.settings'].with_user(user.id)
+
+        # ResConfig = self.env['res.config.settings']
+        # default_values = ResConfig.default_get(list(ResConfig.fields_get()))
+
         return True
 
     @api.model
     def updateLatLong(self, data):
         partner = self.env['res.partner'].search([('id', '=', data['id'])], limit=1)
         partner.write({
-            'partner_latitude': data['lat'],
-            'partner_longitude': data['long']
+            'add_latitude': data['lat'],
+            'add_longitude': data['long']
             })
         return partner
 
+    @api.model
+    def get_setting_map_key(self):
+        key = self.env['ir.config_parameter'].sudo().get_param('rumah_sakit.google_maps_key')
+        #
+        return key
 
 
  

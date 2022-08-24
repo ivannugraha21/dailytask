@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account', 'product', 'base_geolocalize'],
+    'depends': ['base', 'account', 'product'],
 
     # always loaded
     'data': [
@@ -36,6 +36,7 @@
         'views/pasien-daftar-kunjungan.xml',
         'views/pasien-pasien.xml',
         'views/produk-produk.xml',
+        'views/res_settings_view.xml',
         #
         'report/report-daftar-kunjungan.xml'
     ],
